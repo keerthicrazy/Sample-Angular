@@ -1,0 +1,59 @@
+<div class="container">
+<h1>User Registration</h1>
+<form class="register-form" [formGroup]="form">
+  <mat-form-field class="register-full-width" appearance="fill">
+    <mat-label>Name</mat-label>
+    <input matInput type="text" formControlName="name">
+    <mat-hint>Numbers are not allowed and maxlength is 15</mat-hint>
+    <mat-error *ngIf="form.controls['name'].hasError('required')">
+      Name is <strong>required</strong>
+    </mat-error>
+    <mat-error *ngIf="form.controls['name'].hasError('pattern')">
+      Please enter a valid name
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="register-full-width" appearance="fill">
+    <mat-label>Password</mat-label>
+    <input matInput type="password" formControlName="password">    
+    <mat-hint>Password should be 6 to 12 characters in length</mat-hint>
+    <mat-error *ngIf="form.controls['password'].hasError('required')">
+      Password is <strong>required</strong>
+    </mat-error>
+    <mat-error *ngIf="form.controls['password'].hasError('minlength')">
+      password should be atleast 6 characters in length
+    </mat-error>
+    <mat-error *ngIf="form.controls['password'].hasError('maxlength')">
+      password should not exceed 12 characters
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="register-full-width" appearance="fill">
+    <mat-label>Email</mat-label>
+    <input type="email" matInput formControlName="email"
+           placeholder="Ex. pat@example.com">
+    <mat-error *ngIf="form.controls['email'].hasError('required')">
+      Email is <strong>required</strong>
+    </mat-error>
+    <mat-error *ngIf="form.controls['email'].hasError('email')">
+     Please enter a valid email address
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="register-full-width" appearance="fill">
+    <mat-label>Bio</mat-label>
+    <input matInput formControlName="bio">
+    <mat-hint>Maximum 200 characters, Minimum 20 characters</mat-hint>
+    <mat-error *ngIf="form.controls['bio'].hasError('required')">
+      Bio is <strong>required</strong>
+    </mat-error>
+    <mat-error *ngIf="form.controls['bio'].hasError('minlength')">
+      Bio should be atleast 20 characters 
+    </mat-error>
+    <mat-error *ngIf="form.controls['bio'].hasError('maxlength')">
+      Bio should not exceed 200 characters
+    </mat-error>
+  </mat-form-field>
+
+  <button class="submit-btn" mat-raised-button color="primary" type="submit" [disabled]="form.invalid" (click)="submitUser()">Submit</button>
+</form>
+</div>

@@ -1,0 +1,11 @@
+
+<div class="btn_LogOut">
+    <button mat-raised-button color="primary" (click)="logOut()">LogOut</button>
+</div>
+<div class="container" *ngIf="userData">
+<mat-card class="bgColor">
+<p>I am: {{userData?.name}}</p>
+<p>Contact me via my email id : {{userData?.email}}</p>
+<p>Here is my bio: {{userData?.bio}}</p>
+</mat-card>
+</div>
